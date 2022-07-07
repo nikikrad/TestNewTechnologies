@@ -57,4 +57,11 @@ dependencies {
     //Moshi
     implementation("com.squareup.moshi:moshi:1.11.0")
     //kapt("com.squareup.moshi:moshi-kotlin-codegen:1.11.0")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3")
+
+
+    //Navigation Components
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
 }

@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/home"
-        android:icon="@drawable/home_image"
-        android:title="Home"
+        android:id="@+id/translator"
+        android:icon="@drawable/translator_image"
+        android:title="Translator"
         android:iconTint="@color/black"/>
+    <item
+        android:id="@+id/favorite"
+        android:title="Note"
+        android:iconTint="@color/black"
+        android:icon="@drawable/note_image"/>
+
     <item
         android:id="@+id/settings"
         android:icon="@drawable/settings_image"

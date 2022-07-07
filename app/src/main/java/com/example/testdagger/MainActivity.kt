@@ -5,27 +5,37 @@ import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.testdagger.data.InternetConnectionReceiver
+import com.example.testdagger.databinding.ActivityMainBinding
 import com.example.testdagger.domain.ApiService
 import com.example.testdagger.domain.instance.RetrofitInstance
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var receiver: InternetConnectionReceiver
+    private lateinit var navController: NavController
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         receiver = InternetConnectionReceiver()
         IntentFilter(Intent.ACTION_POWER_CONNECTED).also {
             registerReceiver(receiver, it)
         }
-        val retrofit = RetrofitInstance.getRetrofitInstance().create(ApiService::class.java)
-        val request = retrofit.sendRequest("My Name Nikita")
-        Thread.sleep(500)
-        Log.e("KEK", request.message())
-
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragment_container_view) as NavHostFragment
+        navController = navHostFragment.findNavController()
+        val bottomNavigationView = binding.bnvNavigation
+        bottomNavigationView.setupWithNavController(navController)
     }
+
+
 
     override fun onStop() {
         super.onStop()

@@ -4,18 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2B1515"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/Toolbar"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container_view"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/black"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bnv_navigation"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph"
+        />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
+        android:id="@+id/bnv_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,52 +29,5 @@
         app:itemTextColor="@color/white"
         app:itemRippleColor="@color/white"
         app:menu="@menu/bottom_menu"/>
-
-
-    <TextView
-        android:id="@+id/tv_AddNewProduct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="添加產品"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_AddNewProduct"
-        app:layout_constraintEnd_toEndOf="@+id/btn_AddNewProduct"
-        app:layout_constraintStart_toStartOf="@+id/btn_AddNewProduct" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_AddNewProduct"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_margin="30dp"
-        android:background="@drawable/rectangle_background"
-        android:text="add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_CheckAllProduct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="查看產品"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_CheckAllProduct"
-        app:layout_constraintEnd_toEndOf="@+id/btn_CheckAllProduct"
-        app:layout_constraintStart_toStartOf="@+id/btn_CheckAllProduct" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_CheckAllProduct"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_margin="30dp"
-        android:background="@drawable/rectangle_background"
-        android:text="look"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

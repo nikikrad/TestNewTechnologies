@@ -1,6 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/teal_700"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+    <TextView
+        android:id="@+id/tv_AddNewProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="添加產品"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_AddNewProduct"
+        app:layout_constraintEnd_toEndOf="@+id/btn_AddNewProduct"
+        app:layout_constraintStart_toStartOf="@+id/btn_AddNewProduct" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_AddNewProduct"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_margin="30dp"
+        android:background="@drawable/rectangle_background"
+        android:text="add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_CheckAllProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="查看產品"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_CheckAllProduct"
+        app:layout_constraintEnd_toEndOf="@+id/btn_CheckAllProduct"
+        app:layout_constraintStart_toStartOf="@+id/btn_CheckAllProduct" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_CheckAllProduct"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_margin="30dp"
+        android:background="@drawable/rectangle_background"
+        android:text="look"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
