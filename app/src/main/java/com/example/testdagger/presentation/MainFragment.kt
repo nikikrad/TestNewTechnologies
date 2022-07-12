@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.testdagger.databinding.FragmentMainBinding
 import io.reactivex.Scheduler
@@ -26,14 +28,16 @@ class MainFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val arrayLanguage: MutableList<String> = emptyList<String>().toMutableList()
+        arrayLanguage.add("ru")
+        arrayLanguage.add("en")
         binding.btnSendText.setOnClickListener {
-            val q = binding.etLineForTranslate.text
-            mainPresenter.getTranslatedText(q)
+            mainPresenter.getTranslatedText(binding.etLineForTranslate.text, arrayLanguage[binding.spinner.selectedItemPosition])
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    binding.tvTranslatedText.text = it
-                    Log.e("KEK", it)
+                .subscribe({ translatedText ->
+                    binding.tvTranslatedText.text = translatedText
+                    binding.progressBar.isVisible = translatedText.isEmpty()
                 }, {
                     Log.e("KEK", it.localizedMessage!!)
                 })

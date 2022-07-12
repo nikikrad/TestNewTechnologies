@@ -12,11 +12,11 @@ import java.util.*
 
 class MainPresenter {
 
-    fun getTranslatedText(q: Editable?): Observable<String> {
+    fun getTranslatedText(q: Editable?, target: String): Observable<String> {
         return Observable.create { observable ->
             var kkk = ""
             val retrofit = RetrofitInstance.getRetrofitInstance().create(ApiService::class.java)
-            retrofit.sendGetRequest(q.toString(), "ru")
+            retrofit.sendGetRequest(q.toString(), target)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ response ->
