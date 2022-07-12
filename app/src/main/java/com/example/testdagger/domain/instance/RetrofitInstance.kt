@@ -1,21 +1,28 @@
 package com.example.testdagger.domain.instance
 
-import com.example.testdagger.data.dataclass.ResponseTranslate
-import com.google.gson.annotations.JsonAdapter
-import com.squareup.moshi.Moshi
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 
 internal class RetrofitInstance {
 
-    companion object{
+    companion object {
+
         private const val URL = "https://translation.googleapis.com/language/translate/"
 
         fun getRetrofitInstance(): Retrofit {
+            val okHttpClient = OkHttpClient()
+                .newBuilder()
+                .followRedirects(true)
+                .build()
+
             return Retrofit.Builder()
                 .baseUrl(URL)
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(okHttpClient)
                 .build()
         }
     }
