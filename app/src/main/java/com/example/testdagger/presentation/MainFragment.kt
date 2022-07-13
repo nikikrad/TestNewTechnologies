@@ -28,6 +28,7 @@ class MainFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val array = MutableList<String>(2,2)
         val arrayLanguage: MutableList<String> = emptyList<String>().toMutableList()
         arrayLanguage.add("ru")
         arrayLanguage.add("en")
