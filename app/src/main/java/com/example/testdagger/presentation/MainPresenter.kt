@@ -1,27 +1,26 @@
 package com.example.testdagger.presentation
 
-import android.text.Editable
+import android.app.Application
 import android.util.Log
-import com.example.testdagger.domain.ApiService
-import com.example.testdagger.domain.instance.RetrofitInstance
+import com.example.testdagger.presentation.repository.MainRepository
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
 import io.reactivex.Observable
-import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import java.util.*
+import javax.inject.Inject
 
-class MainPresenter {
+class MainPresenter @Inject constructor(
+    private val mainRepository: MainRepository
+) {
 
-    fun getTranslatedText(q: Editable?, target: String): Observable<String> {
+    fun getTranslatedText(q: String, target: String): Observable<String> {
         return Observable.create { observable ->
-            var kkk = ""
-            val retrofit = RetrofitInstance.getRetrofitInstance().create(ApiService::class.java)
-            retrofit.sendGetRequest(q.toString(), target)
+            mainRepository.getTranslate(q, target)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ response ->
-                    kkk = response.data.translations[0].translatedText
-                    observable.onNext(kkk)
+                    observable.onNext(response)
                 }, { throwable ->
                     Log.e("ERROR", throwable.toString())
                 })

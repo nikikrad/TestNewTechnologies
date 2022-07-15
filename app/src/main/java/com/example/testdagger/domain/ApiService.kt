@@ -6,8 +6,6 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface ApiService {
-    @POST("v2?key=AIzaSyDvJXHnMw6UYxwSHNkQ_m72JsohvmI8mLQ&q=Hello my name nikita&target=ru")
-    fun sendRequest(): Call<ResponseTranslate>
 
     @GET("v2?key=AIzaSyDvJXHnMw6UYxwSHNkQ_m72JsohvmI8mLQ")
     fun sendGetRequest(
