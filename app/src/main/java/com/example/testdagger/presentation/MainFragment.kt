@@ -5,19 +5,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import com.example.testdagger.TestClass
 import com.example.testdagger.databinding.FragmentMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
-import kotlin.contracts.contract
 
+@AndroidEntryPoint
 class MainFragment : Fragment() {
 
     lateinit var binding: FragmentMainBinding
@@ -50,6 +46,8 @@ class MainFragment : Fragment() {
                 })
         }
     }
+
+
 
 
 }

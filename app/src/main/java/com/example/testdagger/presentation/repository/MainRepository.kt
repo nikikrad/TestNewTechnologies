@@ -2,11 +2,13 @@ package com.example.testdagger.presentation.repository
 
 import android.util.Log
 import com.example.testdagger.domain.ApiService
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class MainRepository(private val apiService: ApiService) {
+class MainRepository @Inject constructor(private val apiService: ApiService) {
 
     fun getTranslate(q: String, target: String): Observable<String> {
         return Observable.create{ observable ->

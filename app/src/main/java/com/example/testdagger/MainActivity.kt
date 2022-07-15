@@ -4,18 +4,15 @@ import android.content.Intent
 import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.activity.compose.setContent
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.testdagger.data.InternetConnectionReceiver
 import com.example.testdagger.databinding.ActivityMainBinding
-import com.example.testdagger.domain.ApiService
-import com.example.testdagger.domain.instance.RetrofitInstance
 import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     lateinit var receiver: InternetConnectionReceiver
@@ -24,9 +21,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            
-        }
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         receiver = InternetConnectionReceiver()
