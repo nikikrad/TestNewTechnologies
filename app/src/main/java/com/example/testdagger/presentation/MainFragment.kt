@@ -1,6 +1,7 @@
 package com.example.testdagger.presentation
 
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import com.example.testdagger.databinding.FragmentMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -19,6 +21,7 @@ class MainFragment : Fragment() {
     lateinit var binding: FragmentMainBinding
     @Inject
     lateinit var mainPresenter: MainPresenter
+    lateinit var textToSpeech: TextToSpeech
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,6 +46,15 @@ class MainFragment : Fragment() {
                 }, {
                     Log.e("KEK", it.localizedMessage!!)
                 })
+        }
+        binding.btnVoiceText.setOnClickListener{
+            textToSpeech = TextToSpeech(context, TextToSpeech.OnInitListener {
+                if(it == TextToSpeech.SUCCESS){
+                    textToSpeech.language = Locale.US
+                    textToSpeech.setSpeechRate(0.80f)
+                    textToSpeech.speak(binding.tvTranslatedText.text.toString(), TextToSpeech.QUEUE_ADD, null)
+                }
+            })
         }
     }
 
