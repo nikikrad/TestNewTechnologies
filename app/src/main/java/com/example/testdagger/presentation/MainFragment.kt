@@ -40,7 +40,6 @@ class MainFragment : Fragment() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ translatedText ->
                     binding.tvTranslatedText.text = translatedText
-                    binding.progressBar.isVisible = translatedText.isEmpty()
                 }, {
                     Log.e("KEK", it.localizedMessage!!)
                 })
