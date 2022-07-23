@@ -34,9 +34,9 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val arrayLanguage: MutableList<String> = emptyList<String>().toMutableList()
-        arrayLanguage.add("ru")
-        arrayLanguage.add("en")
-        arrayLanguage.add("ja")
+        arrayLanguage.add("RU")
+        arrayLanguage.add("EN")
+        arrayLanguage.add("JA")
         binding.btnSendText.setOnClickListener {
             mainPresenter.getTranslatedText(binding.etLineForTranslate.text.toString(), arrayLanguage[binding.spinner.selectedItemPosition])
                 .subscribeOn(Schedulers.io())
@@ -51,7 +51,11 @@ class MainFragment : Fragment() {
         binding.btnVoiceText.setOnClickListener{
             textToSpeech = TextToSpeech(context, TextToSpeech.OnInitListener {
                 if(it == TextToSpeech.SUCCESS){
-                    textToSpeech.language = Locale.US
+                    when(binding.spinner.selectedItemPosition){
+                        1 -> textToSpeech.language = Locale.UK
+                        2 -> textToSpeech.language = Locale.US
+                        3 -> textToSpeech.language = Locale.JAPAN
+                    }
                     textToSpeech.setSpeechRate(0.80f)
                     textToSpeech.speak(binding.tvTranslatedText.text.toString(), TextToSpeech.QUEUE_ADD, null)
                 }
