@@ -1,6 +1,7 @@
 package com.example.testdagger.presentation
 
 import android.util.Log
+import com.example.testdagger.data.dataclass.ResponseTranslate
 import com.example.testdagger.presentation.repository.MainRepository
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -11,7 +12,7 @@ class MainPresenter @Inject constructor(
     private val mainRepository: MainRepository
 ){
 
-    fun getTranslatedText(q: String, target: String): Observable<String> {
+    fun getTranslatedText(q: String, target: String): Observable<ResponseTranslate> {
         return Observable.create { observable ->
             mainRepository.getTranslate(q, target)
                 .subscribeOn(Schedulers.io())

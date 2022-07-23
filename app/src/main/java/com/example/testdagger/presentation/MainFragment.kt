@@ -2,6 +2,7 @@ package com.example.testdagger.presentation
 
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
+import android.text.Editable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -40,8 +41,9 @@ class MainFragment : Fragment() {
             mainPresenter.getTranslatedText(binding.etLineForTranslate.text.toString(), arrayLanguage[binding.spinner.selectedItemPosition])
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ translatedText ->
-                    binding.tvTranslatedText.text = translatedText
+                .subscribe({ responseTranslate ->
+                    binding.tvTranslatedText.text = responseTranslate.data.translations[0].translatedText
+                    binding.tvDetectedLanguage.text = "Detected language is " + responseTranslate.data.translations[0].detectedSourceLanguage
                 }, {
                     Log.e("KEK", it.localizedMessage!!)
                 })
