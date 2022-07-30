@@ -26,6 +26,6 @@ class NoteFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val database = Firebase.database
         val myRef = database.getReference("text")
-        myRef.setValue(TextTranslator("Hi", "Привет"))
+        myRef.setValue(TextTranslator("buy", "купить"))
     }
 }
