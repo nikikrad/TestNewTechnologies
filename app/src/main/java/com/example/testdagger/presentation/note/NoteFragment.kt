@@ -33,10 +33,10 @@ class NoteFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val database = Firebase.database
-        val myRef = database.getReference("text")
-        myRef.setValue(TextTranslator("buy", "купить"))
+        myRef = database.getReference("text")
+//        myRef.setValue(TextTranslator("buy", "купить"))
         getDataFirebase()
-//        myRef.child("hui").setValue(TextTranslator("buy", "купить"))
+        myRef.child("hui").setValue(TextTranslator("", ""))
     }
 
     private fun getDataFirebase(){
@@ -47,13 +47,16 @@ class NoteFragment: Fragment() {
 
 //                Log.e("KEK", mmm.toString())
 
+                snapshot.key
+                val snap = snapshot.key
+                Log.e("KEK", snap.toString())
                 Log.e("KEK", value.toString())
                 snapshot.children.forEach {
                     Log.e("KEK", it.value.toString())
                 }
                 snapshot.children.forEach {
-                    it.children.forEach {
-                        Log.e("KEK", it.value.toString())
+                    it.children.forEach {childrenChildren ->
+                        Log.e("KEK", childrenChildren.value.toString())
                     }
                 }
 //                Log.e("KEK", snapshot.childrenCount.toString())
