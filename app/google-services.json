@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "646077801145",
+    "firebase_url": "https://db-for-translater-project-default-rtdb.firebaseio.com",
+    "project_id": "db-for-translater-project",
+    "storage_bucket": "db-for-translater-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:646077801145:android:f22767c4650ea57b71f168",
+        "android_client_info": {
+          "package_name": "com.example.testdagger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "646077801145-8aobvg4r1v0ns6h9fuvni94dchagt17g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhx6SsnbcqaRMKCospzspfMqneHIDzeSU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "646077801145-8aobvg4r1v0ns6h9fuvni94dchagt17g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
