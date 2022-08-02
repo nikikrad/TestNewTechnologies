@@ -26,6 +26,14 @@
         android:text="hi"
         android:gravity="center"/>
 
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_textToTranslate"
+        app:layout_constraintStart_toStartOf="@+id/tv_textToTranslate"
+        app:layout_constraintEnd_toEndOf="@+id/tv_textToTranslate"
+        android:background="@drawable/ic_arrow_down"/>
+
     <TextView
         android:id="@+id/tv_translatedText"
         android:layout_width="0dp"
@@ -37,7 +45,7 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         android:text="Привет"
-        android:layout_margin="20dp"
+        android:layout_margin="25dp"
         android:paddingBottom="20dp"/>
     
 
