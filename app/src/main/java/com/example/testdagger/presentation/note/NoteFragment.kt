@@ -42,9 +42,6 @@ class NoteFragment: Fragment() {
         myRef.addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 var value = snapshot.value
-//                val mmm = value as TextTranslator
-
-//                Log.e("KEK", mmm.toString())
 
                 Log.e("KEK", value.toString())
                 snapshot.children.forEach {
@@ -55,7 +52,6 @@ class NoteFragment: Fragment() {
                         Log.e("KEK", it.value.toString())
                     }
                 }
-//                Log.e("KEK", snapshot.childrenCount.toString())
             }
 
             override fun onCancelled(error: DatabaseError) {
